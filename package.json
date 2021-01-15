@@ -11,11 +11,39 @@
     "react-scripts": "4.0.1",
     "web-vitals": "^0.2.4"
   },
+  "homepage": ".",
+  "main": "./main/main.js",
+  "build": {
+    "extends": null,
+    "appId": "zeusapp.com",
+    "mac": {
+      "category": "your.app.category.type"
+    },
+    "files":[
+      "build/**/*",
+      "main/**/*",
+      {
+        "from": "build",
+        "to": "build",
+        "filter": ["**/*", "!foo/*.js"]
+      },
+      {
+        "from": "main",
+        "to": "main",
+        "filter": ["**/*", "!foo/*.js"]
+      }
+      
+    ]
+
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +62,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "electron": "^11.2.0",
+    "electron-builder": "^22.9.1"
   }
 }
